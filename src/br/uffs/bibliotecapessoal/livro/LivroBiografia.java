@@ -19,6 +19,11 @@ public class LivroBiografia extends Livro implements ILivro{
         this.perildoCoberto = perildo;
     }
 
+    public void printLivro() {
+  
+        
+    }
+
     public void editar(){
 
     }

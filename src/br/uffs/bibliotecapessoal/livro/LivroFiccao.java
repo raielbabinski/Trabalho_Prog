@@ -17,7 +17,7 @@ public class LivroFiccao extends Livro implements ILivro{
         int idadeRecomendada = utils.getInt();
         this.idadeRecomendada = idadeRecomendada;
     }
-
+    
 
     public String getTema() {
         return tema;
@@ -33,6 +33,20 @@ public class LivroFiccao extends Livro implements ILivro{
 
     public void setIdadeRecomendada(int idadeRecomendada) {
         this.idadeRecomendada = idadeRecomendada;
+    }
+
+
+    @Override
+    public void editar() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'editar'");
+    }
+
+
+    @Override
+    public void printLivro() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'printLivro'");
     }
     
 }

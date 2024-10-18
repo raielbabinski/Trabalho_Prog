@@ -8,4 +8,9 @@ public class LivroGenerico extends Livro implements ILivro{
     public void editar(){
 
     }
+
+    @Override
+    public void printLivro() {
+
+    }
 }

@@ -34,4 +34,12 @@ public class LivroHistorico extends Livro implements ILivro{
         this.anoCoberto = anoCoberto;
     }
 
+    public void editar() {
+
+    }
+
+    public void printLivro() {
+
+    }
+
 }

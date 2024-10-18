@@ -33,6 +33,14 @@ public class LivroFilosofico extends Livro implements ILivro{
         this.filosofia = filosofiaAbordada;
     }
 
+    public void editar() {
+
+    }
+
+    public void printLivro() {
+
+    }
+
     
 
 }
