@@ -1,7 +1,7 @@
 package br.uffs.bibliotecapessoal.usuario;
 
 import java.util.ArrayList;
-import br.uffs.bibliotecapessoal.utils.utils;
+
 
 import br.uffs.bibliotecapessoal.livro.*;
 
@@ -31,47 +31,12 @@ public class Usuario{
         this.senha = senha;
     }
 
-    public void setLivro(int modelLivro){
-        int escolha;
-        escolha = utils.getInt();
-
-        switch (escolha) {
-            case 1:
-                LivroGenerico livroGenerico = new LivroGenerico();
-                livroGenerico.criar();
-                listaLivros.add(livroGenerico);
-                break;
-            case 2:
-                LivroBiografia livroBiografia = new LivroBiografia();
-                livroBiografia.criar();
-                listaLivros.add(livroBiografia);
-                break;
-            case 3:
-                LivroFiccao livroFiccao= new LivroFiccao();
-                livroFiccao.criar();
-                listaLivros.add(livroFiccao);
-                break;
-            case 4:
-                LivroFilosofico livroFilosofico = new LivroFilosofico();
-                livroFilosofico.criar();
-                listaLivros.add(livroFilosofico);    
-                break;
-            case 5:
-                LivroHistorico livroHistorico = new LivroHistorico();
-                livroHistorico.criar();
-                listaLivros.add(livroHistorico); 
-                break;
-            case 0:
-                System.out.println("--Saindo...");
-                break;
-            default:
-                System.out.println("--Opção inválida, tente novamente.");
-            }
-
+    public void setLivro(Livro livro){
+        listaLivros.add(livro);
     }
 
-    public void visualizarLivros(){
-
+    public void visualizarTodos(){
+        
     }
 }
 

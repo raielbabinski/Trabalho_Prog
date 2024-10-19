@@ -22,8 +22,8 @@ abstract public class BibliotecaUsuario{
             System.out.println("3 - Excluir Usuario");
             System.out.println("4 - Editar Nome do Usuario");
             System.out.println("0 - Sair");
-            System.out.print("--Escolha uma opção: \n");
-
+            System.out.print("-- Escolha uma opção: \n");
+            
             escolha = utils.getInt();
             switch (escolha) {
                 case 1:
@@ -39,28 +39,26 @@ abstract public class BibliotecaUsuario{
                     editarNomeUsuario();
                     break;
                 case 0:
-                    System.out.println("--Saindo...");
+                    System.out.println("-- Saindo...");
                     break;
                 default:
-                    System.out.println("--Opção inválida, tente novamente.");
+                    System.out.println("-- Opção inválida, tente novamente.");
                 }
         }
     }
 
     public static void criarUsuario(){
         utils.limparTerminal();
-        
         System.out.println("--------- Criar Úsuario ---------");
-        System.out.println("Digite um nome para seu Usuario");
-        String nome = scanner.next();
+        System.out.println("-- Digite um nome para seu Usuário");
+        String nome = getUserNome();
+        System.out.println("-- Digite uma senha para o Usuário");
         int senha = utils.getInt();
-        
         Usuario usuario = new Usuario(nome, senha);
 
         listaUsuarios.add(usuario);
         
-        System.out.println("Usuario criado!!");
-        scanner.nextLine();
+        System.out.println("-- Usuario criado!!");
         scanner.nextLine();
         utils.limparTerminal();
     }
@@ -69,8 +67,12 @@ abstract public class BibliotecaUsuario{
         int flag = 0;
         utils.limparTerminal();
         System.out.println("----- Excluir Usuario ------");
-        System.out.println("Digite o nome do usuário:");
+        System.out.println("-- Digite o nome do usuário:");
         String nome = scanner.next();
+        if (!nomeExiste(nome)){
+            System.out.println("-- ERRO: Nome não existe");
+            return;
+        }
         Usuario usuario = null;
         for(Usuario u : listaUsuarios){
             if (nome.equals(u.getNome())){
@@ -81,12 +83,12 @@ abstract public class BibliotecaUsuario{
         }
         if (flag == 1){
             listaUsuarios.remove(usuario);            
-            System.out.println("--Usuario " + nome + " excluido");
+            System.out.println("-- Usuário " + nome + " excluido");
             scanner.nextLine();
             scanner.nextLine();
             utils.limparTerminal();
         }else{
-            System.out.println("--Usuario " + nome + " não existe");
+            System.out.println("-- Usuário " + nome + " não existe");
             scanner.nextLine();
             scanner.nextLine();
             utils.limparTerminal();
@@ -95,25 +97,25 @@ abstract public class BibliotecaUsuario{
 
     public static void selecionarUsuario(){
         utils.limparTerminal();
-        System.out.println("--------Seleção do Usuário-------");
+        System.out.println("-------- Seleção do Usuário -------");
         BibliotecaUsuario.printUsuarios();
-        System.out.println("\n--Digite o numero do Usuário:");
+        System.out.println("\n-- Digite o número do Usuário:");
         int i = utils.getInt();
         Usuario u = null;
         if (i <= listaUsuarios.size()){
             u = listaUsuarios.get(i - 1);
         }else{
-            System.out.println("--Opção inválida");
+            System.out.println("-- Opção inválida");
             scanner.nextLine();
             scanner.nextLine();
             return ;
         }
-        System.out.println("--Digite a senha:");
+        System.out.println("-- Digite a senha:");
         int senha = utils.getInt();
         if (senha == u.getSenha()){
             BibliotecaLivro.opcoes(u);
         }else{
-            System.out.println("--Senha errada");
+            System.out.println("-- Senha errada");
             scanner.nextLine();
             scanner.nextLine();
         }
@@ -131,23 +133,47 @@ abstract public class BibliotecaUsuario{
         utils.limparTerminal();
         System.out.println("----- Editar Usuário -----");
         printUsuarios();
-        System.out.println("--Escolha o usuário que deseja editar:");
+        System.out.println("-- Digite o número do usuário:");
         int i = utils.getInt();
         Usuario usuario = null;
         if (i <= listaUsuarios.size()){
             usuario = listaUsuarios.get(i - 1);
         }else{
-            System.out.println("--Opção inválida");
+            System.out.println("-- Opção inválida");
             scanner.nextLine();
             scanner.nextLine();
             return ;
         }
-        System.out.println("--Novo Nome:");
+        System.out.println("-- Novo Nome:");
         String nome = scanner.next();
         usuario.setNome(nome);
-        System.out.println("--Nome modificado!!");
+        System.out.println("-- Nome modificado!!");
         scanner.nextLine();
         scanner.nextLine();
+    }
+
+    public static boolean nomeExiste(String nome){
+        for(Usuario u : listaUsuarios){
+            if(u.getNome().equals(nome)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String getUserNome(){
+        String nome;
+        while(true){
+            nome = scanner.next();
+            if (nomeExiste(nome)){
+                System.out.println("-- O nome digitado já existe");
+                System.out.println("-- Digite um nome válido");
+                continue;
+            }else{
+                break;
+            }
+        }
+        return nome;
     }
 }
 
