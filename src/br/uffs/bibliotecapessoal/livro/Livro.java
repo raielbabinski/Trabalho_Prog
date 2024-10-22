@@ -3,7 +3,7 @@ package br.uffs.bibliotecapessoal.livro;
 import java.util.Scanner;
 import br.uffs.bibliotecapessoal.utils.*;
 
-public class Livro {
+public class Livro implements ILivro{
     private String titulo;
     private String autor;
     private int paginas;
@@ -24,6 +24,31 @@ public class Livro {
         this.titulo = titulo;
         this.autor = autor;
         this.paginas = paginas;
+        this.status = "Para ler";
+    }
+
+    @Override
+    public void printLivro(int opcao){
+        boolean opcao2Invalida = (opcao == 2 && !this.status.equals("Para ler"));
+        boolean opcao3Invalida = (opcao == 3 && !this.status.equals("Lendo"));
+        boolean opcao4Invalida = (opcao == 4 && !this.status.equals("Lido"));
+    
+        if (opcao2Invalida || opcao3Invalida || opcao4Invalida) {
+            return;
+        }
+    
+        System.out.println("=========================================");
+        System.out.println("-- Titulo: " + this.titulo);
+        System.out.println("-- Autor: " + this.autor);
+        System.out.println("-- Paginas: " + this.paginas);
+        System.out.println("-- Status: " + this.status);
+        System.out.println("=========================================");
+    
+    }
+
+    @Override
+    public void editar(){
+
     }
 
     public String getTitulo() {
