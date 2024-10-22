@@ -21,15 +21,16 @@ public class utils {
 
     public static int getInt(){
         int r = 0;
-        try{
-            r = scanner.nextInt();
-        } catch (InputMismatchException e) {
-                utils.limparTerminal();
-                System.out.println("Erro: Por favor, insira um número.");
-                scanner.nextLine();
-                scanner.nextLine();
-                utils.limparTerminal();
-        }
+        while(true){    
+            try{
+                r = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                    System.out.println("Erro: Por favor, insira um número.");
+                    scanner.nextLine();
+                    continue;
+            }
+            break;
+        }    
         return r;
     }
     

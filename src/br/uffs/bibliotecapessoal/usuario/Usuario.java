@@ -35,8 +35,10 @@ public class Usuario{
         listaLivros.add(livro);
     }
 
-    public void visualizarTodos(){
-        
+    public void visualizarLivros(int opcao){
+        for(Livro l: listaLivros){
+            l.printLivro(opcao);
+        }
     }
 }
 

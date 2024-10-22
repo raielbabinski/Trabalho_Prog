@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import br.uffs.bibliotecapessoal.utils.utils;
 
-public class LivroBiografia extends Livro implements ILivro{
+public class LivroBiografia extends Livro{
     private Scanner scanner = new Scanner(System.in);
     private String biografado;
     private int perildoCoberto;
@@ -17,15 +17,6 @@ public class LivroBiografia extends Livro implements ILivro{
         System.out.println("--Perildo Coberto:");
         int perildo = utils.getInt();
         this.perildoCoberto = perildo;
-    }
-
-    public void printLivro() {
-  
-        
-    }
-
-    public void editar(){
-
     }
 
     public String getBiografado() {
@@ -44,4 +35,29 @@ public class LivroBiografia extends Livro implements ILivro{
         this.perildoCoberto = perildoCoberto;
     }
     
+    @Override
+    public void printLivro(int opcao) {
+        boolean opcao2Invalida = (opcao == 2 && !this.getStatus().equals("Para ler"));
+        boolean opcao3Invalida = (opcao == 3 && !this.getStatus().equals("Lendo"));
+        boolean opcao4Invalida = (opcao == 4 && !this.getStatus().equals("Lido"));
+    
+        if (opcao2Invalida || opcao3Invalida || opcao4Invalida) {
+            return;
+        }
+    
+        System.out.println("=========================================");
+        System.out.println("-- Titulo: " + this.getTitulo());
+        System.out.println("-- Autor: " + this.getAutor());
+        System.out.println("-- Paginas: "+ this.getPaginas());
+        System.out.println("-- Biografado: " + this.biografado);
+        System.out.println("-- Perildo Coberto: " + this.perildoCoberto);
+        System.out.println("-- Status: " + this.getStatus());
+        System.out.println("=========================================");
+        
+    }
+
+    @Override
+    public void editar(){
+
+    }
 }

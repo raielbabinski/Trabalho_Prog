@@ -1,12 +1,11 @@
 package br.uffs.bibliotecapessoal.biblioteca;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import br.uffs.bibliotecapessoal.livro.LivroBiografia;
 import br.uffs.bibliotecapessoal.livro.LivroFiccao;
 import br.uffs.bibliotecapessoal.livro.LivroFilosofico;
-import br.uffs.bibliotecapessoal.livro.LivroGenerico;
+import br.uffs.bibliotecapessoal.livro.Livro;
 import br.uffs.bibliotecapessoal.livro.LivroHistorico;
 import br.uffs.bibliotecapessoal.usuario.*;
 import br.uffs.bibliotecapessoal.utils.*;
@@ -28,38 +27,30 @@ abstract public class BibliotecaLivro{
             System.out.println("0 - Sair da Biblioteca");
             System.out.print("-- Escolha uma opção: ");
 
-            try {
-                escolha = scanner.nextInt();
+
+            escolha = utils.getInt();
                 
-                switch (escolha) {
-                    case 1:
+            switch (escolha) {
+                case 1:
                         
-                        break;
-                    case 2:
-                        registrarLivro(usuario);
-                        break;
-                    case 3:
-                        visualizarLivros();
-                        break;
-                    case 4:
+                    break;
+                case 2:
+                    registrarLivro(usuario);
+                    break;
+                case 3:
+                    visualizarLivros(usuario);
+                    break;
+                case 4:
                        
-                        break;
-                    case 5:
+                    break;
+                case 5:
 
-                        break;
-                    case 0:
-                        System.out.println("-- Saindo...");
-                        break;
-                    default:
-                        System.out.println("-- Opção inválida, tente novamente.");
-                }
-
-            } catch (InputMismatchException e) {
-                utils.limparTerminal();
-                System.out.println("-- Erro: Por favor, insira um número.");
-                scanner.nextLine();
-                scanner.nextLine();
-                utils.limparTerminal();
+                    break;
+                case 0:
+                    System.out.println("-- Saindo...");
+                    break;
+                default:
+                    System.out.println("-- Opção inválida, tente novamente.");
             }
         }
     }
@@ -79,8 +70,8 @@ abstract public class BibliotecaLivro{
 
         switch (escolha) {
             case 1:
-                LivroGenerico livroGenerico = new LivroGenerico();
-                livroGenerico.criar();
+                Livro livroGenerico = new Livro();
+                livroGenerico.criarLivro();
                 usuario.setLivro(livroGenerico);
                 break;
             case 2:
@@ -111,7 +102,7 @@ abstract public class BibliotecaLivro{
         }
     }
 
-    public static void visualizarLivros(){
+    public static void visualizarLivros(Usuario usuario){
         System.out.println("-------Visualização de livros-------");
         System.out.println("1 - Todos os livros");
         System.out.println("2 - Livros para ler");
@@ -119,6 +110,14 @@ abstract public class BibliotecaLivro{
         System.out.println("4 - Livros lidos");
         System.out.println("0 - Voltar");
         System.out.println("-- Selecione a opção de visualização de livros:");
+    
+        int escolha = utils.getInt();
+
+        usuario.visualizarLivros(escolha);
+
+        scanner.nextLine();
     }
+
+
 }
 
