@@ -59,7 +59,6 @@ abstract public class BibliotecaUsuario{
         }else{
             System.out.println("-- Opção inválida");
             scanner.nextLine();
-            scanner.nextLine();
             return ;
         }
         System.out.println("-- Digite a senha:");
@@ -68,7 +67,6 @@ abstract public class BibliotecaUsuario{
             BibliotecaLivro.opcoes(u);
         }else{
             System.out.println("-- Senha errada");
-            scanner.nextLine();
             scanner.nextLine();
         }
         
@@ -112,11 +110,9 @@ abstract public class BibliotecaUsuario{
             listaUsuarios.remove(usuario);            
             System.out.println("-- Usuário " + nome + " excluido");
             scanner.nextLine();
-            scanner.nextLine();
             utils.limparTerminal();
         }else{
             System.out.println("-- Usuário " + nome + " não existe");
-            scanner.nextLine();
             scanner.nextLine();
             utils.limparTerminal();
         }
@@ -141,7 +137,6 @@ abstract public class BibliotecaUsuario{
         String nome = scanner.next();
         usuario.setNome(nome);
         System.out.println("-- Nome modificado!!");
-        scanner.nextLine();
         scanner.nextLine();
     }
 

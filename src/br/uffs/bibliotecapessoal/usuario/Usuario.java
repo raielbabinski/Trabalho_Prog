@@ -40,5 +40,35 @@ public class Usuario{
             l.printLivro(opcao);
         }
     }
+    
+    public Livro getLivro(int i){
+        return listaLivros.get(i);
+    }
+
+    public Livro getLivroNome(String nome){
+        for(Livro l : listaLivros){
+            if (l.getTitulo().equals(nome)){
+                return l;
+            }
+        }
+        return null;
+    }
+
+    public boolean getEmptyLivros(){
+        return listaLivros.isEmpty();
+    }
+
+    public void excluirLivro(int index){
+        listaLivros.remove(index);
+    }
+    
+
+    public int getSizeLista(){
+        return listaLivros.size();
+    }
+
+    public void editarLivro(int index){
+        listaLivros.get(index).editar(); 
+    }
 }
 

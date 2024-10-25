@@ -2,6 +2,8 @@ package br.uffs.bibliotecapessoal.livro;
 
 import java.util.Scanner;
 import br.uffs.bibliotecapessoal.utils.*;
+import java.util.ArrayList;
+import br.uffs.bibliotecapessoal.anotacao.Anotacao;
 
 public class Livro implements ILivro{
     private String titulo;
@@ -10,7 +12,7 @@ public class Livro implements ILivro{
     private String status;
     private Scanner scanner = new Scanner(System.in);
     
-    //private List<String> anotacoes;
+    private ArrayList<Anotacao> anotacoes = new ArrayList<>();
 
     public void criarLivro(){
         utils.limparTerminal();
@@ -24,12 +26,12 @@ public class Livro implements ILivro{
         this.titulo = titulo;
         this.autor = autor;
         this.paginas = paginas;
-        this.status = "Para ler";
+        this.status = "Ler";
     }
 
     @Override
     public void printLivro(int opcao){
-        boolean opcao2Invalida = (opcao == 2 && !this.status.equals("Para ler"));
+        boolean opcao2Invalida = (opcao == 2 && !this.status.equals("Ler"));
         boolean opcao3Invalida = (opcao == 3 && !this.status.equals("Lendo"));
         boolean opcao4Invalida = (opcao == 4 && !this.status.equals("Lido"));
     
@@ -37,18 +39,28 @@ public class Livro implements ILivro{
             return;
         }
     
-        System.out.println("=========================================");
+        System.out.println("=================================");
         System.out.println("-- Titulo: " + this.titulo);
         System.out.println("-- Autor: " + this.autor);
         System.out.println("-- Paginas: " + this.paginas);
         System.out.println("-- Status: " + this.status);
-        System.out.println("=========================================");
+        System.out.println("=================================");
     
     }
 
     @Override
     public void editar(){
-
+        utils.limparTerminal();
+        System.out.println("------ Edicao de Livro ------");
+        System.out.println("-- Titulo:");
+        String titulo = scanner.nextLine();
+        System.out.println("-- Autor:");
+        String autor = scanner.nextLine();
+        System.out.println("-- Paginas");
+        int paginas = utils.getInt();
+        this.titulo = titulo;
+        this.autor = autor;
+        this.paginas = paginas;
     }
 
     public String getTitulo() {
@@ -81,5 +93,9 @@ public class Livro implements ILivro{
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public ArrayList<Anotacao> getAnotacoes() {
+        return anotacoes;
     }
 }
