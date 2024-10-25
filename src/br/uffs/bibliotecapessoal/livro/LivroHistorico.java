@@ -9,7 +9,7 @@ public class LivroHistorico extends Livro{
     private int anoCoberto;
 
     public void criar(){
-        criar();
+        criarLivro();
         System.out.println("--Perildo Histórico:");
         String perildoH = scanner.nextLine();
         this.perildoHistorico = perildoH;
@@ -37,6 +37,24 @@ public class LivroHistorico extends Livro{
     
     @Override
     public void editar() {
+        utils.limparTerminal();
+        System.out.println("------ Edicao de Livro ------");
+        System.out.println("-- Titulo:");
+        String titulo = scanner.nextLine();
+        System.out.println("-- Autor:");
+        String autor = scanner.nextLine();
+        System.out.println("-- Paginas");
+        int paginas = utils.getInt();
+        System.out.println("-- Perildo Histórico:");
+        String perildoH = scanner.nextLine();
+        this.setPerildoHistorico(perildoH);
+        System.out.println("-- Ano Coberto:");
+        int ano = utils.getInt();
+        this.setAnoPerildoHistorico(ano);
+        this.setTitulo(titulo);
+        this.setAutor(autor);
+        this.setPaginas(paginas);
+        System.out.println("Livro editado com sucesso!");
 
     }
 
@@ -49,12 +67,14 @@ public class LivroHistorico extends Livro{
         if (opcao2Invalida || opcao3Invalida || opcao4Invalida) {
             return;
         }
-        System.out.println("=========================================");
+        System.out.println("=================================");
         System.out.println("-- Titulo: " + this.getTitulo());
         System.out.println("-- Autor: " + this.getAutor());
         System.out.println("-- Paginas: "+ this.getPaginas());
+        System.out.println("-- Perildo Histórico: " + this.perildoHistorico);
+        System.out.println("-- Ano Coberto: " + this.anoCoberto);
         System.out.println("-- Status: " + this.getStatus());
-        System.out.println("=========================================");
+        System.out.println("=================================");
     
     }
 

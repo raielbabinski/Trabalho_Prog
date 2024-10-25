@@ -45,19 +45,36 @@ public class LivroBiografia extends Livro{
             return;
         }
     
-        System.out.println("=========================================");
+        System.out.println("=================================");
         System.out.println("-- Titulo: " + this.getTitulo());
         System.out.println("-- Autor: " + this.getAutor());
         System.out.println("-- Paginas: "+ this.getPaginas());
         System.out.println("-- Biografado: " + this.biografado);
         System.out.println("-- Perildo Coberto: " + this.perildoCoberto);
         System.out.println("-- Status: " + this.getStatus());
-        System.out.println("=========================================");
+        System.out.println("=================================");
         
     }
 
     @Override
     public void editar(){
-
+        utils.limparTerminal();
+        System.out.println("------ Edicao de Livro ------");
+        System.out.println("-- Titulo:");
+        String titulo = scanner.nextLine();
+        System.out.println("-- Autor:");
+        String autor = scanner.nextLine();
+        System.out.println("-- Paginas");
+        int paginas = utils.getInt();
+        System.out.println("-- Biografado:");
+        String biografado = scanner.nextLine();
+        System.out.println("-- Perildo Coberto:");
+        int perildo = utils.getInt();
+        
+        this.setTitulo(titulo);
+        this.setAutor(autor);
+        this.setPaginas(paginas);
+        this.setBiografado(biografado);
+        this.setPerildoCoberto(perildo);
     }
 }

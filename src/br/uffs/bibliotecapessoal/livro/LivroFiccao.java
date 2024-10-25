@@ -37,7 +37,23 @@ public class LivroFiccao extends Livro{
 
     @Override
     public void editar() {
-
+        utils.limparTerminal();
+        System.out.println("------ Edicao de Livro ------");
+        System.out.println("-- Titulo:");
+        String titulo = scanner.nextLine();
+        System.out.println("-- Autor:");
+        String autor = scanner.nextLine();
+        System.out.println("-- Paginas");
+        int paginas = utils.getInt();
+        System.out.println("-- Tema:");
+        String tema = scanner.nextLine();
+        System.out.println("-- Idade Recomendada:");
+        int idadeRecomendada = utils.getInt();
+        this.setTitulo(titulo);
+        this.setAutor(autor);
+        this.setPaginas(paginas);
+        this.setTema(tema);
+        this.setIdadeRecomendada(idadeRecomendada);
     }
 
     @Override
@@ -49,13 +65,14 @@ public class LivroFiccao extends Livro{
         if (opcao2Invalida || opcao3Invalida || opcao4Invalida) {
             return;
         }
-        System.out.println("=========================================");
+        System.out.println("=================================");
         System.out.println("-- Titulo: " + this.getTitulo());
         System.out.println("-- Autor: " + this.getAutor());
         System.out.println("-- Paginas: "+ this.getPaginas());
+        System.out.println("-- Tema: " + this.tema);
+        System.out.println("-- Idade Recomendada: " + this.idadeRecomendada);
         System.out.println("-- Status: " + this.getStatus());
-        System.out.println("=========================================");
-        
+        System.out.println("=================================");        
     }
     
 }
